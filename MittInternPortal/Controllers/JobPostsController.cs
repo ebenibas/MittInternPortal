@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -49,7 +50,7 @@ namespace MittInternPortal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CompanyName,EmployerId,RoundId,CompanyAddress,Position,Posted,Description")] JobPost jobPost)
+        public ActionResult Create([Bind(Include = "Id,EmployerId,RoundId,CompanyAddress,Position,Posted,Description")] JobPost jobPost)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +86,7 @@ namespace MittInternPortal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CompanyName,EmployerId,RoundId,CompanyAddress,Position,Posted,Description")] JobPost jobPost)
+        public ActionResult Edit([Bind(Include = "Id,EmployerId,RoundId,CompanyAddress,Position,Posted,Description")] JobPost jobPost)
         {
             if (ModelState.IsValid)
             {
@@ -131,6 +132,40 @@ namespace MittInternPortal.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult JobList()
+        {
+            var jobPost = db.JobPosts.ToList();
+            return View(jobPost);
+        }
+        [HttpGet]
+        public ActionResult SubmitResume()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SubmitResume(HttpPostedFileBase file /*Resume r*/)
+        {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/UploadedResume"), _FileName);
+                    file.SaveAs(_path);
+                    //r.Name = _FileName;
+                    //db.Resume.Add(r);
+                    //db.SaveChanges();
+
+                }
+                ViewBag.Message = "File Uploded Successfully!";
+                return View();
+            }
+            catch
+            {
+                ViewBag.Message = "File Upload failed!";
+                return View();
+            }
         }
     }
 }

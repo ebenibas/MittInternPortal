@@ -17,7 +17,7 @@ namespace MittInternPortal.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        
         public AccountController()
         {
         }
@@ -39,7 +39,7 @@ namespace MittInternPortal.Controllers
                 _signInManager = value; 
             }
         }
-
+        
         public ApplicationUserManager UserManager
         {
             get

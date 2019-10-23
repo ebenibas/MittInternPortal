@@ -167,6 +167,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Content\ApplyController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -180,19 +181,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910211826102_addInitial.cs" />
-    <Compile Include="Migrations\201910211826102_addInitial.Designer.cs">
-      <DependentUpon>201910211826102_addInitial.cs</DependentUpon>
+    <Compile Include="Migrations\201910230030292_addInitial.cs" />
+    <Compile Include="Migrations\201910230030292_addInitial.Designer.cs">
+      <DependentUpon>201910230030292_addInitial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Apply.cs" />
     <Compile Include="Models\Employer.cs" />
-    <Compile Include="Models\EmployersController.cs" />
+    <Compile Include="Controllers\EmployersController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\JobPost.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Resume.cs" />
     <Compile Include="Models\Round.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentJobPost.cs" />
@@ -444,11 +447,6 @@
     <Content Include="Views\Admin\UnAssignRoles.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\FancyLayout.cshtml" />
-    <Content Include="Views\JobPosts\Create.cshtml" />
-    <Content Include="Views\JobPosts\Delete.cshtml" />
-    <Content Include="Views\JobPosts\Details.cshtml" />
-    <Content Include="Views\JobPosts\Edit.cshtml" />
-    <Content Include="Views\JobPosts\Index.cshtml" />
     <Content Include="Views\Instructors\Create.cshtml" />
     <Content Include="Views\Instructors\Delete.cshtml" />
     <Content Include="Views\Instructors\Details.cshtml" />
@@ -459,14 +457,27 @@
     <Content Include="Views\Employers\Details.cshtml" />
     <Content Include="Views\Employers\Edit.cshtml" />
     <Content Include="Views\Employers\Index.cshtml" />
+    <Content Include="Views\JobPosts\Create.cshtml" />
+    <Content Include="Views\JobPosts\Delete.cshtml" />
+    <Content Include="Views\JobPosts\Details.cshtml" />
+    <Content Include="Views\JobPosts\Edit.cshtml" />
+    <Content Include="Views\JobPosts\Index.cshtml" />
+    <Content Include="Views\JobPosts\JobList.cshtml" />
     <Content Include="Views\Students\Create.cshtml" />
     <Content Include="Views\Students\Delete.cshtml" />
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Shared\StudentDashBoard.cshtml" />
+    <Content Include="Views\Shared\InstructorDashBoard.cshtml" />
+    <Content Include="Views\Shared\EmployerDashBoard.cshtml" />
+    <Content Include="Views\Students\DashBoard.cshtml" />
+    <Content Include="Views\Apply\Apply.cshtml" />
+    <Content Include="Views\JobPosts\SubmitResume.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadedResume\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -482,8 +493,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910211826102_addInitial.resx">
-      <DependentUpon>201910211826102_addInitial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910230030292_addInitial.resx">
+      <DependentUpon>201910230030292_addInitial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

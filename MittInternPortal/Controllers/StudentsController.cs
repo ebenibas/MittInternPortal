@@ -17,7 +17,8 @@ namespace MittInternPortal.Controllers
         // GET: Students
         public ActionResult Index()
         {
-            return View(db.Student.ToList());
+            var students = db.Student.Include(s => s.ApplicationUser).Include(s => s.Instructor);
+            return View(students.ToList());
         }
 
         // GET: Students/Details/5
@@ -38,6 +39,8 @@ namespace MittInternPortal.Controllers
         // GET: Students/Create
         public ActionResult Create()
         {
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FullName");
+            ViewBag.InstructorId = new SelectList(db.Instructor, "Id", "ApplicationUserId");
             return View();
         }
 
@@ -46,7 +49,7 @@ namespace MittInternPortal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,Address,BirthDate,Gender,Contact,InstructorsId")] Student student)
+        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,Address,BirthDate,Gender,Contact,InstructorId")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +58,8 @@ namespace MittInternPortal.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FullName", student.ApplicationUserId);
+            ViewBag.InstructorId = new SelectList(db.Instructor, "Id", "ApplicationUserId", student.InstructorId);
             return View(student);
         }
 
@@ -70,6 +75,8 @@ namespace MittInternPortal.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FullName", student.ApplicationUserId);
+            ViewBag.InstructorId = new SelectList(db.Instructor, "Id", "ApplicationUserId", student.InstructorId);
             return View(student);
         }
 
@@ -78,7 +85,7 @@ namespace MittInternPortal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ApplicationUserId,Address,BirthDate,Gender,Contact,InstructorsId")] Student student)
+        public ActionResult Edit([Bind(Include = "Id,ApplicationUserId,Address,BirthDate,Gender,Contact,InstructorId")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +93,8 @@ namespace MittInternPortal.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FullName", student.ApplicationUserId);
+            ViewBag.InstructorId = new SelectList(db.Instructor, "Id", "ApplicationUserId", student.InstructorId);
             return View(student);
         }
 

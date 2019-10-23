@@ -8,7 +8,6 @@ namespace MittInternPortal.Models
     public class JobPost
     {
         public int Id { get; set; }
-        public string CompanyName { get; set; }
         public int EmployerId { get; set; }
         public virtual Employer Employers { get; set; }
         public int RoundId { get; set; }

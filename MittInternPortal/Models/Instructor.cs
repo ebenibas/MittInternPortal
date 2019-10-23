@@ -11,7 +11,7 @@ namespace MittInternPortal.Models
         public string ApplicationUserId { get; set; }
         public virtual ApplicationUser InstructorName { get; set; }
         public string Address { get; set; }
-
+        public virtual ICollection<Student> Students { get; set; }
         public int Contact { get; set; }
        
     }

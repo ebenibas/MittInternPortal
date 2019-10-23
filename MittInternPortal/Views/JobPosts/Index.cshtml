@@ -18,9 +18,6 @@
             @Html.DisplayNameFor(model => model.Round.Session)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CompanyAddress)
         </th>
         <th>
@@ -38,13 +35,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Employers.CompanyName)
+            @Html.DisplayFor(modelItem => item.Employers.ApplicationUserId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Round.Session)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompanyName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CompanyAddress)
