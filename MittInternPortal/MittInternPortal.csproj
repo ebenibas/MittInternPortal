@@ -176,6 +176,7 @@
     <Compile Include="Controllers\JobPostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\RoundsController.cs" />
     <Compile Include="Controllers\StudentJobPostsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
@@ -476,6 +477,8 @@
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Views\JobPosts\MyJobPost.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

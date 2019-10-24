@@ -4,26 +4,21 @@
 }
 
 <h2>MyJobPost</h2>
-<ul>
-
-    <li>
-        @foreach (var task in item)
-        {
-            <div>
-                @task.Name
-
-            </div>
-        }
-    </li>
-    <li>
-        @foreach (var userProject in item.ApplicationUsers)
-        {
-            <div>
-                @userProject.ApplicationUser.Email
-                @userProject.Project.Name
-
-            </div>
-        }
-    </li>
-
-</ul>
+<table class=" table">
+    <tr>
+        <td class="c">
+            Role Name
+        </td>
+    </tr>
+    @foreach (var item in JobPosts)
+    {
+<tr>
+    <td class="c">
+        @item.EmployerId;
+    </td>
+    <td class="c">
+        @item.Description;
+    </td>
+</tr>
+    }
+</table>

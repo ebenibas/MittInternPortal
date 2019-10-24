@@ -62,7 +62,7 @@ namespace MittInternPortal.Models
         public bool RememberMe { get; set; }
     }
 
-    
+
     public class RegisterViewModel
     {
         [Required]
@@ -84,6 +84,9 @@ namespace MittInternPortal.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public string Name { get; set; }
+        //public int RoleId { get; set; }
+        //public List<Role> Roles { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -105,6 +108,7 @@ namespace MittInternPortal.Models
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
+     
     }
 
     public class ForgotPasswordViewModel
