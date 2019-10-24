@@ -15,8 +15,8 @@ namespace MittInternPortal.Models
         public string Gender { get; set; }
         public int Contact { get; set; }
 
-        public int InstructorId { get; set; }
-        public virtual Instructor Instructor { get; set; }
+        public string InstructorId { get; set; }
+        public virtual ApplicationUser Instructor { get; set; }
 
         public virtual ICollection<StudentJobPost> StudentJobPosts { get; set; }
     }

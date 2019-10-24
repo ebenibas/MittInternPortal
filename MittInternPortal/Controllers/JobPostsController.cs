@@ -7,13 +7,20 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MittInternPortal.Models;
 
 namespace MittInternPortal.Controllers
 {
     public class JobPostsController : Controller
     {
+
         private ApplicationDbContext db = new ApplicationDbContext();
+        private JobManagement JobManager;
+        public JobPostsController()
+        {
+            JobManager = new JobManagement(db);
+        }
 
         // GET: JobPosts
         public ActionResult Index()
@@ -53,7 +60,7 @@ namespace MittInternPortal.Controllers
         public ActionResult Create([Bind(Include = "Id,EmployerId,RoundId,CompanyAddress,Position,Posted,Description")] JobPost jobPost)
         {
             if (ModelState.IsValid)
-            {
+            {//
                 db.JobPosts.Add(jobPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -166,6 +173,17 @@ namespace MittInternPortal.Controllers
                 ViewBag.Message = "File Upload failed!";
                 return View();
             }
+        }
+        public ActionResult MyJobPost()
+        {
+            if (User.IsInRole("Employer"))
+            {
+                var userId = User.Identity.GetUserId();
+                var allJobsForUser = JobManager.GetUserTickets(userId).ToList();
+                return View("Index", allJobsForUser);
+            }
+            return View();
+
         }
     }
 }

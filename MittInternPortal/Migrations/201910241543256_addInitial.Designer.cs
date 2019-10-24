@@ -13,7 +13,7 @@ namespace MittInternPortal.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201910230030292_addInitial"; }
+            get { return "201910241543256_addInitial"; }
         }
         
         string IMigrationMetadata.Source

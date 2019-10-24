@@ -40,7 +40,7 @@ namespace MittInternPortal.Controllers
         public ActionResult Create()
         {
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FullName");
-            ViewBag.InstructorId = new SelectList(db.Instructor, "Id", "ApplicationUserId");
+            ViewBag.InstructorId = new SelectList(db.Users, "Id", "FullName");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace MittInternPortal.Controllers
             }
 
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FullName", student.ApplicationUserId);
-            ViewBag.InstructorId = new SelectList(db.Instructor, "Id", "ApplicationUserId", student.InstructorId);
+            ViewBag.InstructorId = new SelectList(db.Users, "Id", "FullName", student.InstructorId);
             return View(student);
         }
 
@@ -76,7 +76,7 @@ namespace MittInternPortal.Controllers
                 return HttpNotFound();
             }
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FullName", student.ApplicationUserId);
-            ViewBag.InstructorId = new SelectList(db.Instructor, "Id", "ApplicationUserId", student.InstructorId);
+            ViewBag.InstructorId = new SelectList(db.Users, "Id", "FullName", student.InstructorId);
             return View(student);
         }
 
@@ -94,7 +94,7 @@ namespace MittInternPortal.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "FullName", student.ApplicationUserId);
-            ViewBag.InstructorId = new SelectList(db.Instructor, "Id", "ApplicationUserId", student.InstructorId);
+            ViewBag.InstructorId = new SelectList(db.Users, "Id", "FullName", student.InstructorId);
             return View(student);
         }
 

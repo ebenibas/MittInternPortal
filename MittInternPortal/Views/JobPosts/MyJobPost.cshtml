@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MittInternPortal.Models.JobPost>
+@{
+    ViewBag.Title = "MyJobPost";
+}
+
+<h2>MyJobPost</h2>
+<ul>
+
+    <li>
+        @foreach (var task in item)
+        {
+            <div>
+                @task.Name
+
+            </div>
+        }
+    </li>
+    <li>
+        @foreach (var userProject in item.ApplicationUsers)
+        {
+            <div>
+                @userProject.ApplicationUser.Email
+                @userProject.Project.Name
+
+            </div>
+        }
+    </li>
+
+</ul>

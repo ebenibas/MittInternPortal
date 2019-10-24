@@ -12,7 +12,10 @@ namespace MittInternPortal.Models
     {
 
         public string FullName { get; set; }
- 
+        public virtual ICollection<JobPost> JobPosts { get; set; }
+        
+        public virtual ICollection<Student> Students { get; set; }
+   
         public virtual ICollection<Instructor> Instructors { get; set; }
         public virtual ICollection<Employer> Employers { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

@@ -170,6 +170,7 @@
     <Compile Include="Content\ApplyController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ApplyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorsController.cs" />
     <Compile Include="Controllers\JobPostsController.cs" />
@@ -181,9 +182,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910230030292_addInitial.cs" />
-    <Compile Include="Migrations\201910230030292_addInitial.Designer.cs">
-      <DependentUpon>201910230030292_addInitial.cs</DependentUpon>
+    <Compile Include="Migrations\201910241543256_addInitial.cs" />
+    <Compile Include="Migrations\201910241543256_addInitial.Designer.cs">
+      <DependentUpon>201910241543256_addInitial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Controllers\EmployersController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Instructor.cs" />
+    <Compile Include="Models\JobManagement.cs" />
     <Compile Include="Models\JobPost.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Notification.cs" />
@@ -463,17 +465,17 @@
     <Content Include="Views\JobPosts\Edit.cshtml" />
     <Content Include="Views\JobPosts\Index.cshtml" />
     <Content Include="Views\JobPosts\JobList.cshtml" />
+    <Content Include="Views\Shared\StudentDashBoard.cshtml" />
+    <Content Include="Views\Shared\InstructorDashBoard.cshtml" />
+    <Content Include="Views\Shared\EmployerDashBoard.cshtml" />
+    <Content Include="Views\Apply\Apply.cshtml" />
+    <Content Include="Views\JobPosts\SubmitResume.cshtml" />
     <Content Include="Views\Students\Create.cshtml" />
     <Content Include="Views\Students\Delete.cshtml" />
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\Shared\StudentDashBoard.cshtml" />
-    <Content Include="Views\Shared\InstructorDashBoard.cshtml" />
-    <Content Include="Views\Shared\EmployerDashBoard.cshtml" />
-    <Content Include="Views\Students\DashBoard.cshtml" />
-    <Content Include="Views\Apply\Apply.cshtml" />
-    <Content Include="Views\JobPosts\SubmitResume.cshtml" />
+    <Content Include="Views\JobPosts\MyJobPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -493,8 +495,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910230030292_addInitial.resx">
-      <DependentUpon>201910230030292_addInitial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910241543256_addInitial.resx">
+      <DependentUpon>201910241543256_addInitial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
