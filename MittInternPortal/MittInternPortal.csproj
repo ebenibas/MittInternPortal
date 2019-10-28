@@ -183,9 +183,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910241543256_addInitial.cs" />
-    <Compile Include="Migrations\201910241543256_addInitial.Designer.cs">
-      <DependentUpon>201910241543256_addInitial.cs</DependentUpon>
+    <Compile Include="Migrations\201910281450427_AddInitial.cs" />
+    <Compile Include="Migrations\201910281450427_AddInitial.Designer.cs">
+      <DependentUpon>201910281450427_AddInitial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -479,6 +479,9 @@
     <Content Include="Views\JobPosts\MyJobPost.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Instructors\InstructorDashBoard.cshtml" />
+    <Content Include="Views\Employers\EmployerDashBoard.cshtml" />
+    <Content Include="Views\Students\StudentDashBoard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -498,8 +501,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910241543256_addInitial.resx">
-      <DependentUpon>201910241543256_addInitial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910281450427_AddInitial.resx">
+      <DependentUpon>201910281450427_AddInitial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

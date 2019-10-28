@@ -7,13 +7,13 @@ namespace MittInternPortal.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addInitial : IMigrationMetadata
+    public sealed partial class AddInitial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addInitial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddInitial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910241543256_addInitial"; }
+            get { return "201910281450427_AddInitial"; }
         }
         
         string IMigrationMetadata.Source

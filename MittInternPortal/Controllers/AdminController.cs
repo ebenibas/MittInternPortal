@@ -57,6 +57,13 @@ namespace MittInternPortal.Controllers
             var result = manager.RemoveUserFromRole(userId, role);
             return View(result);
         }
-
+        public ActionResult InstructorDashBoard()
+        {
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("InstructorDashBoard");
+            }
+            return View();
+        }
     }
 }

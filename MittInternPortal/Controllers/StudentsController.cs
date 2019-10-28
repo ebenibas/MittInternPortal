@@ -132,5 +132,17 @@ namespace MittInternPortal.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult StudentDashBoard()
+        {
+            if (User.IsInRole("Admin"))
+            {
+                RedirectToAction("JobList", "JobPosts");
+            }
+            else
+            {
+                RedirectToAction("JobList", "JobPosts");
+            }
+            return View();
+        }
     }
 }

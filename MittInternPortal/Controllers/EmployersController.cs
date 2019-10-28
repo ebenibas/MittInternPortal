@@ -127,5 +127,17 @@ namespace MittInternPortal.Models
             }
             base.Dispose(disposing);
         }
+        public ActionResult EmployerDashBoard()
+        {
+            if (User.IsInRole("Admin"))
+            {
+                RedirectToAction("JobList", "JobPosts");
+            }
+            else
+            {
+                RedirectToAction("JobList", "JobPosts");
+            }
+            return View();
+        }
     }
 }

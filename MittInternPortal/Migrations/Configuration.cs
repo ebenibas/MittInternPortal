@@ -21,8 +21,7 @@ namespace MittInternPortal.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
             var RoleManager = new RoleManager<IdentityRole>
-              (new RoleStore<IdentityRole>(context));
-            RoleManager.Create(new IdentityRole("Admin"));
+            (new RoleStore<IdentityRole>(context));
             RoleManager.Create(new IdentityRole("Employer"));
             RoleManager.Create(new IdentityRole("Student"));
             RoleManager.Create(new IdentityRole("Instructor"));
