@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MittInternPortal.Models;
 
-namespace MittInternPortal.Models
+namespace MittInternPortal.Controllers
 {
     public class EmployersController : Controller
     {
@@ -126,18 +127,6 @@ namespace MittInternPortal.Models
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-        public ActionResult EmployerDashBoard()
-        {
-            if (User.IsInRole("Admin"))
-            {
-                RedirectToAction("JobList", "JobPosts");
-            }
-            else
-            {
-                RedirectToAction("JobList", "JobPosts");
-            }
-            return View();
         }
     }
 }

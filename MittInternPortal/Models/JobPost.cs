@@ -8,8 +8,8 @@ namespace MittInternPortal.Models
     public class JobPost
     {
         public int Id { get; set; }
-        public int EmployerId { get; set; }
-        public virtual Employer Employers { get; set; }
+        public string EmployerId { get; set; }
+        public virtual ApplicationUser Employers { get; set; }
         public int RoundId { get; set; }
         public virtual Round Round { get; set; }
         public string CompanyAddress { get; set; }

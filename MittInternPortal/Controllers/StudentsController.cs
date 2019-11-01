@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MittInternPortal.Models;
+using System.IO;
+
 
 namespace MittInternPortal.Controllers
 {
@@ -49,8 +51,30 @@ namespace MittInternPortal.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,Address,BirthDate,Gender,Contact,InstructorId")] Student student)
+        public ActionResult Create([Bind(Include = "Id,ApplicationUserId,Address,BirthDate,Gender,Contact,InstructorId")] Student student, HttpPostedFile file)
         {
+            try
+            {
+                if (file.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Image"), _FileName);
+                    file.SaveAs(_path);
+                    //r.Name = _FileName;
+                    //db.Resume.Add(r);
+                    //db.SaveChanges();
+
+                }
+                ViewBag.Message = "File Uploded Successfully!";
+                //return View();
+            }
+            catch
+            {
+                ViewBag.Message = "File Upload failed!";
+                return View();
+            }
+
+
             if (ModelState.IsValid)
             {
                 db.Student.Add(student);
@@ -144,5 +168,6 @@ namespace MittInternPortal.Controllers
             }
             return View();
         }
+       
     }
 }

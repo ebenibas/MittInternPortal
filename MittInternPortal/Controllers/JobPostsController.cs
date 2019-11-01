@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using MittInternPortal.Models;
 
 namespace MittInternPortal.Controllers
@@ -15,17 +15,15 @@ namespace MittInternPortal.Controllers
     public class JobPostsController : Controller
     {
 
+        RoleManager<IdentityRole> rolesManager;
+        UserManager<Models.ApplicationUser> usersManager;
+
         private ApplicationDbContext db = new ApplicationDbContext();
-        private JobManagement JobManager;
-        public JobPostsController()
-        {
-            JobManager = new JobManagement(db);
-        }
 
         // GET: JobPosts
         public ActionResult Index()
         {
-            var jobPosts = db.JobPosts.Include(j => j.Employers).Include(j => j.Round);
+            var jobPosts = db.JobPosts.Include(j => j.Round);
             return View(jobPosts.ToList());
         }
 
@@ -47,7 +45,7 @@ namespace MittInternPortal.Controllers
         // GET: JobPosts/Create
         public ActionResult Create()
         {
-            ViewBag.EmployerId = new SelectList(db.Employer, "Id", "CompanyName");
+            ViewBag.EmployerId = new SelectList(db.Employer, "Id", "FullName");
             ViewBag.RoundId = new SelectList(db.Rounds, "Id", "Session");
             return View();
         }
@@ -60,13 +58,12 @@ namespace MittInternPortal.Controllers
         public ActionResult Create([Bind(Include = "Id,EmployerId,RoundId,CompanyAddress,Position,Posted,Description")] JobPost jobPost)
         {
             if (ModelState.IsValid)
-            {//
+            {
                 db.JobPosts.Add(jobPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.EmployerId = new SelectList(db.Employer, "Id", "CompanyName", jobPost.EmployerId);
+            ViewBag.EmployerId = new SelectList(db.Employer, "Id", "FullName", jobPost.Employers.FullName);
             ViewBag.RoundId = new SelectList(db.Rounds, "Id", "Session", jobPost.RoundId);
             return View(jobPost);
         }
@@ -83,7 +80,7 @@ namespace MittInternPortal.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployerId = new SelectList(db.Employer, "Id", "CompanyName", jobPost.EmployerId);
+            ViewBag.EmployerId = new SelectList(db.Employer, "Id", "FullName", jobPost.Employers.FullName);
             ViewBag.RoundId = new SelectList(db.Rounds, "Id", "Session", jobPost.RoundId);
             return View(jobPost);
         }
@@ -101,7 +98,7 @@ namespace MittInternPortal.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployerId = new SelectList(db.Employer, "Id", "CompanyName", jobPost.EmployerId);
+            ViewBag.EmployerId = new SelectList(db.Employer, "Id", "FullName", jobPost.Employers.FullName);
             ViewBag.RoundId = new SelectList(db.Rounds, "Id", "Session", jobPost.RoundId);
             return View(jobPost);
         }
@@ -140,50 +137,38 @@ namespace MittInternPortal.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult JobList()
-        {
-            var jobPost = db.JobPosts.ToList();
-            return View(jobPost);
-        }
-        [HttpGet]
-        public ActionResult SubmitResume()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult SubmitResume(HttpPostedFileBase file /*Resume r*/)
-        {
-            try
-            {
-                if (file.ContentLength > 0)
-                {
-                    string _FileName = Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("~/UploadedResume"), _FileName);
-                    file.SaveAs(_path);
-                    //r.Name = _FileName;
-                    //db.Resume.Add(r);
-                    //db.SaveChanges();
-
-                }
-                ViewBag.Message = "File Uploded Successfully!";
-                return View();
-            }
-            catch
-            {
-                ViewBag.Message = "File Upload failed!";
-                return View();
-            }
-        }
         public ActionResult MyJobPost()
         {
-            if (User.IsInRole("Employer"))
+            if (User.IsInRole("Admin"))
             {
                 var userId = User.Identity.GetUserId();
-                var allJobsForUser = JobManager.GetUserTickets(userId).ToList();
-                return View("Index", allJobsForUser);
-            }
+                db.JobPosts.Where(s => s.EmployerId == userId).ToList();
+            };
             return View();
-
         }
+        //public ActionResult ApplyToPosting(string userId, int JobPostId)
+        //{
+        //    var student = db.Student.Find(userId);
+        //    //if user is not a student they get  back to the job post index
+        //    if (student == null)
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.StudentId = student.Id;
+        //    var JobPost = db.JobPosts.Include(po => po.Employers.FullName).FirstOrDefault(x => x.Id == JobPostId);
+        //    return View(JobPost);
+        //    //this is the page to load up and make an email
+        //}
+        //[HttpPost]
+        //public ActionResult ApplyToPosting(int userId, int JobPostsId, string coverLetter)
+        //{
+
+        //    var student = db.Student.FirstOrDefault(stud => stud.Id == userId);
+
+        //    JobPost jobposting = db.JobPosts.Include(x => x.Employers).FirstOrDefault(post => post.Id == JobPostsId);
+
+          
+
+        //}
     }
 }
