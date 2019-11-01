@@ -174,15 +174,16 @@ namespace MittInternPortal.Controllers
                 return View();
             }
         }
-        public ActionResult MyJobPost()
+        public ActionResult MyJobPost(string mypost)
         {
-            if (User.IsInRole("Employer"))
-            {
-                var userId = User.Identity.GetUserId();
-                var allJobsForUser = JobManager.GetUserTickets(userId).ToList();
-                return View("Index", allJobsForUser);
-            }
-            return View();
+           
+                string input = HttpUtility.HtmlEncode(mypost);
+                var postJob = db.JobPosts.Select(s => s.Employers.ApplicationUser.FullName).Distinct().ToList();
+                ViewBag.myJobPost = new SelectList(postJob);
+                var myJobPosts = db.JobPosts.Where(s => s.Employers.ApplicationUser.FullName == input).ToList();
+                return View(myJobPosts);
+          
+          
 
         }
     }

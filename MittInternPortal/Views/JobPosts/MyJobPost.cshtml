@@ -2,23 +2,67 @@
 @{
     ViewBag.Title = "MyJobPost";
 }
+<p>
 
-<h2>MyJobPost</h2>
-<table class=" table">
-    <tr>
-        <td class="c">
-            Role Name
-        </td>
-    </tr>
-    @foreach (var item in JobPosts)
+
+    @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("MyJobPost", "JobPosts", FormMethod.Get))
     {
-<tr>
-    <td class="c">
-        @item.EmployerId;
-    </td>
-    <td class="c">
-        @item.Description;
-    </td>
-</tr>
-    }
-</table>
+    <p>
+        Please enter your employer name: @Html.TextBox("mypost") <br />
+        <input type="submit" value="filter" />
+    </p>
+}
+
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employers.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Round.Session)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employers.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Round.Session)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Posted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
