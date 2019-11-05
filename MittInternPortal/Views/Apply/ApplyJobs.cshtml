@@ -1,0 +1,44 @@
+﻿@model MittInternPortal.Models.Apply
+<h4 style="color:purple">
+
+    <b>FullName:</b>    @ViewBag.FullName <br />
+    <b>Email:</b>  @ViewBag.Email<br />
+    <b>EmployerId  @ViewBag.EmployerId</b>
+
+</h4>
+<hr />
+<h3><b>Apply</b></h3>
+
+
+@using (Html.BeginForm("ApplyJobs", "Apply", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr>
+            <td>Enter FulName: </td>
+            <td>@Html.TextBoxFor(m => m.FullName)</td>
+        </tr>
+        <tr>
+            <td>Enter Email: </td>
+            <td>@Html.TextBoxFor(m => m.Email)</td>
+        </tr>
+        <tr>
+            <td>Enter Employer: </td>
+            <td>   @Html.TextBoxFor(m => m.Employer.CompanyName)</td>
+        </tr>
+        <tr>
+            <td>upload resume:</td>
+            <td>
+
+                <div>
+                    @Html.TextBox("file", "", new { type = "file" })<br />
+
+                    @ViewBag.Message
+                </div>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit Form" /></td>
+        </tr>
+    </table>}

@@ -32,7 +32,6 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">JobPortal</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
@@ -72,12 +71,10 @@
                         <div class="row">
                             <div class="col-md-12 nav-link-wrap">
                                 <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <button class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">
+                                    <button>
                                         @Html.ActionLink("Find Jobs", "JobList", "JobPosts")
                                     </button>
-                                    <button class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">
-                                        @Html.ActionLink("Find Employers", "StudentList", "JobPosts")
-                                    </button>
+                                    
                                    
                       
                                 </div>

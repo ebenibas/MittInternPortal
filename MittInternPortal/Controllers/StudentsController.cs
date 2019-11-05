@@ -14,6 +14,7 @@ namespace MittInternPortal.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [Authorize(Roles = "Admin,Student")]
         // GET: Students
         public ActionResult Index()
         {
@@ -143,6 +144,12 @@ namespace MittInternPortal.Controllers
                 RedirectToAction("JobList", "JobPosts");
             }
             return View();
+        }
+        [Authorize(Roles = "Admin,Employer")]
+        public ActionResult ListOfStudents()
+        {
+            
+            return View(db.Student.ToList());
         }
     }
 }

@@ -13,7 +13,7 @@ namespace MittInternPortal.Models
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Employers
+
         public ActionResult Index()
         {
             var employers = db.Employer.Include(e => e.ApplicationUser);

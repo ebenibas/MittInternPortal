@@ -15,6 +15,7 @@ namespace MittInternPortal.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Instructors
+
         public ActionResult Index()
         {
             var instructors = db.Instructor.Include(i => i.InstructorName);

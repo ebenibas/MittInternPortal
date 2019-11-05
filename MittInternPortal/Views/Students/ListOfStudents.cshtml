@@ -1,10 +1,9 @@
-﻿@model IEnumerable<MittInternPortal.Models.JobPost>
-
-<h2>List of Jobs</h2>
-
+﻿@model IEnumerable<MittInternPortal.Models.Student>
 @{
-    Layout = null;
+    ViewBag.Title = "ListOfStudents";
 }
+
+<h2>ListOfStudents</h2>
 
 <!DOCTYPE html>
 
@@ -25,23 +24,23 @@
         <thead>
             <tr>
                 <th>
-                    Round
+                    FullName
                 </th>
 
                 <th>
-                    Employer
+                    InstructorName
                 </th>
                 <th>
                     Address
                 </th>
                 <th>
-                    Position
+                    BirthDate
                 </th>
                 <th>
-                    PostDate
+                    Gender
                 </th>
                 <th>
-                    Description
+                    Contact
                 </th>
 
                 <th></th>
@@ -52,26 +51,26 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Round.Session)
+                        @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.EmployerId)
+                        @Html.DisplayFor(modelItem => item.Instructor.FullName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.CompanyAddress)
+                        @Html.DisplayFor(modelItem => item.Address)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Position)
+                        @Html.DisplayFor(modelItem => item.BirthDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Posted)
+                        @Html.DisplayFor(modelItem => item.Gender)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Description)
+                        @Html.DisplayFor(modelItem => item.Contact)
                     </td>
                     <td>
-                        @Html.ActionLink("Details", "Details", "JobPosts", new { id = item.Id }, null) |
-                        @Html.ActionLink("Apply Now", "ApplyJobs", "Apply") |
+                        @Html.ActionLink("Details", "Details", "Students", new { id = item.Id }, null) |
+                        @Html.ActionLink("Apply Now", "Apply", new { id = item.Id }) |
 
                     </td>
                 </tr>
@@ -81,25 +80,24 @@
         <tfoot>
             <tr>
                 <th>
-                    Round
+                    FullName
                 </th>
 
                 <th>
-                    Employer
+                    InstructorName
                 </th>
                 <th>
                     Address
                 </th>
                 <th>
-                    Position
+                    BirthDate
                 </th>
                 <th>
-                    PostDate
+                    Gender
                 </th>
                 <th>
-                    Description
+                    Contact
                 </th>
-
                 <th></th>
             </tr>
         </tfoot>

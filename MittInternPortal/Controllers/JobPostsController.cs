@@ -21,7 +21,7 @@ namespace MittInternPortal.Controllers
         {
             JobManager = new JobManagement(db);
         }
-
+       
         // GET: JobPosts
         public ActionResult Index()
         {
@@ -140,11 +140,13 @@ namespace MittInternPortal.Controllers
             }
             base.Dispose(disposing);
         }
+ 
         public ActionResult JobList()
         {
             var jobPost = db.JobPosts.ToList();
             return View(jobPost);
         }
+
         [HttpGet]
         public ActionResult SubmitResume()
         {
@@ -174,6 +176,7 @@ namespace MittInternPortal.Controllers
                 return View();
             }
         }
+        [Authorize(Roles = "Admin, Employer")]
         public ActionResult MyJobPost(string mypost)
         {
            

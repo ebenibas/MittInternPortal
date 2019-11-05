@@ -8,9 +8,12 @@ namespace MittInternPortal.Models
     public class Apply
     {
         public int Id { get; set; }
-        public string FullName { get; set; } 
+        public string FullName { get; set; }
         public string Email { get; set; }
+        public int EmployerId { get; set; }
+        public virtual Employer Employer { get; set; }
 
-     
+
+
     }
 }
